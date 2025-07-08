@@ -18,13 +18,7 @@ public class UrlShortenerController {
 
     @PostMapping("/shorten")
     public ResponseEntity<String> shortenUrl(@RequestParam("url") String originalUrl) {
-        String shortUrl;
-        try {
-            shortUrl = service.shortenUrl(originalUrl);
-        } catch (IllegalArgumentException e) {
-            return new ResponseEntity<>("Invalid URL", HttpStatus.BAD_REQUEST);
-        }
-
+        String shortUrl = service.shortenUrl(originalUrl);
         return new ResponseEntity<>(shortUrl, HttpStatus.OK);
     }
 

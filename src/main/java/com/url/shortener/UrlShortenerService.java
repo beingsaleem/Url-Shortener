@@ -1,5 +1,6 @@
 package com.url.shortener;
 
+import com.url.shortener.exceptions.InvalidUrlException;
 import org.apache.commons.validator.routines.UrlValidator;
 import org.springframework.stereotype.Service;
 
@@ -22,7 +23,9 @@ public class UrlShortenerService {
     public String shortenUrl(final String originalUrl) {
 
         // check if the url is valid
-        if (!isValidUrl(originalUrl)) throw new IllegalArgumentException("Invalid URL format");
+        if (!isValidUrl(originalUrl)) {
+            throw new InvalidUrlException("Invalid URL is passed");
+        }
 
         // check if the url already exists
         for (Map.Entry<String, String> entry : urlMap.entrySet()) {
@@ -51,8 +54,9 @@ public class UrlShortenerService {
 
     public String shortenUrlUsingUuid(final String originalUrl) {
 
+        // check if the url is valid
         if (!isValidUrl(originalUrl)) {
-            throw new IllegalArgumentException("Invalid URL format.");
+            throw new InvalidUrlException("Invalid URL is passed");
         }
 
         // check if the url already exists
