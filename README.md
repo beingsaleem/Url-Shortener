@@ -1,4 +1,5 @@
 # Url-Shortener
-Spring Boot Project to
-1. shorten the given url.
-2. redirect to the original url when the short url is clicked.
+Spring Boot Project for shortening the long URLs.
+
+1. Shorten the given long url.
+2. Redirect to the original url when the short url is clicked.
